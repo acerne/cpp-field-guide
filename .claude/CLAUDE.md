@@ -28,6 +28,8 @@ Every `##` section must begin with a 1–2 sentence overview before any subsecti
 
 For `###` headings that name a C++ type or function: use backtick code style, omit template parameters (`### \`std::optional\``, not `### \`std::optional<T>\``). In the index, use plain text without backticks — the link styling is enough.
 
+Link text must never contain backtick code styling, even when the heading or title it references does. Use plain text inside `[…]`.
+
 ---
 
 ## Writing Style
