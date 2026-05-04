@@ -16,17 +16,15 @@ or editing any document in this repository.
 
 ## Document Structure
 
-Every document must open with:
+Every document must open with a one-sentence summary in a blockquote:
 
-1. A one-sentence summary in a blockquote:
-   ```
-   > Brief description of what this document covers.
-   ```
-2. An `## Index` section with anchor links to all `##` sections, with `###` subsections indented beneath their parent.
+```
+> Brief description of what this document covers.
+```
 
-Every `##` section must begin with a 1–2 sentence overview before any subsections or content. Use line separator between `##` sections.
+Every `##` section must begin with a 1–2 sentence overview before any subsections or content. Use line separator between `##` sections in articles and version files. Do not use separators in category index files (`README.md`).
 
-For `###` headings that name a C++ type or function: use backtick code style, omit template parameters (`### \`std::optional\``, not `### \`std::optional<T>\``). In the index, use plain text without backticks — the link styling is enough.
+For `###` headings that name a C++ type or function: use backtick code style, omit template parameters (`### \`std::optional\``, not `### \`std::optional<T>\``).
 
 Link text must never contain backtick code styling, even when the heading or title it references does. Use plain text inside `[…]`.
 
@@ -73,21 +71,23 @@ Link text must never contain backtick code styling, even when the heading or tit
 
 ---
 
-## Pitfall Files (`pitfalls/`)
+## Article Files (`pitfalls/`, `idioms/`)
 
-Each pitfall is a standalone file covering one topic. `pitfalls/README.md` is the index — it auto-renders when browsing the directory on GitHub.
+Each article is a standalone file covering one topic. The directory `README.md` is the category index and auto-renders on GitHub.
 
-Individual pitfall files open with a back-link, then a title and summary. No `## Index` needed.
+Articles open with a back-link, then a title and blockquote summary:
 
 ```markdown
-[← Pitfalls](README.md)
+[← Category Name](README.md)
 
-# Pitfall Title
+# Article Title
+
+> One-sentence summary.
 
 Content...
 ```
 
-Full runnable examples (with output blocks) are welcome in pitfall files. Use a `---` separator before each example block.
+Pitfall articles welcome full runnable examples (with output blocks). Use a `---` separator before each example block.
 
 ---
 
