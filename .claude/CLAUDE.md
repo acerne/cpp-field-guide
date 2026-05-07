@@ -48,6 +48,9 @@ Link text must never contain backtick code styling, even when the heading or tit
 - When omissions might confuse, add a `// ...` comment or a brief note.
 - Use idioms that match the C++ version being documented (e.g., use `std::is_integral_v<T>` in
   C++17 content, not the C++14 `::value` form).
+- Never put commands that are not meant to run together in the same fenced code block. This includes
+  per-platform install commands or "pick one" alternatives. Each platform gets its own subsection
+  with its own code block.
 - Before/After comparisons use italic labels on the line before each block:
 
   ```
