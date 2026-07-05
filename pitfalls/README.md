@@ -37,3 +37,11 @@
 
 - [std::vector\<bool\> Is Not a Container](vector-bool.md) — bit-packing specialization returns a proxy reference, breaking generic code and `auto`
 - [Unchecked Access Is Undefined Behavior](unchecked-access.md) — `operator[]` and `operator*` are UB without a precondition check; `at()` and `value()` throw instead
+
+## Operators
+
+- [Non-const Member Operator](non-const-member-operator.md) — member comparison operators without `const` silently break for const objects and const references
+
+## Compiler
+
+- [MSVC /permissive-](msvc-permissive.md) — MSVC is non-conformant by default; the conformance flag name is counterintuitive
