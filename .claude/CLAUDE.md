@@ -94,6 +94,60 @@ Pitfall articles welcome full runnable examples (with output blocks). Use a `---
 
 ---
 
+## Guide Files (`guides/`)
+
+Each guide is a standalone file. Articles open with a back-link, title, and blockquote summary — identical to idiom articles. Use `---` separators between `##` sections.
+
+**Feature guides** explain how to use a specific language or library feature. Structure sections freely by usage pattern.
+
+**Design decision guides** compare multiple approaches and end with a `## Prefer` section stating the rule in 1–2 plain sentences. The opening blockquote must already state the recommendation.
+
+**Version tags**: Feature guides include a version tag on the line immediately after the H1 title:
+
+```
+_C++17_
+```
+
+If the article covers features from multiple C++ versions, move the tag to the relevant `##` section heading instead of the top. Design decision guides with no version dependency omit the tag entirely.
+
+**cppreference links**: Link to cppreference at the end of the first `##` section that introduces the type or function. One link per article; if the article covers multiple distinct types, one link per type at first introduction.
+
+```markdown
+[← Guides](README.md)
+
+# Topic
+
+> One-sentence recommendation stated directly.
+
+---
+
+## Option A Name
+
+Brief explanation.
+
+```cpp
+// example
+```
+
+---
+
+## Option B Name
+
+Brief explanation.
+
+```cpp
+// example
+```
+
+---
+
+## Prefer
+
+State the rule plainly. One to two sentences, no hedging.
+```
+
+---
+
 ## Version Files (`versions/`)
 
 Every version file follows this fixed template:
