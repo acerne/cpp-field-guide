@@ -22,7 +22,7 @@ Every document must open with a one-sentence summary in a blockquote:
 > Brief description of what this document covers.
 ```
 
-Every `##` section must begin with a 1–2 sentence overview before any subsections or content. Use line separator between `##` sections in articles and version files. Do not use separators in category index files (`README.md`).
+Every `##` section must begin with a 1–2 sentence overview before any subsections or content. Use line separator between `##` sections in articles and version files. Do not use separators between theme sections in the root index file (`README.md`).
 
 For `###` headings that name a C++ type or function: use backtick code style, omit template parameters (`### \`std::optional\``, not `### \`std::optional<T>\``).
 
@@ -74,14 +74,36 @@ Link text must never contain backtick code styling, even when the heading or tit
 
 ---
 
-## Article Files (`pitfalls/`, `idioms/`)
+## Root Index (`README.md`)
 
-Each article is a standalone file covering one topic. The directory `README.md` is the category index and auto-renders on GitHub.
+The root `README.md` is the single index for the entire repository. There are no per-category index files — every article, guide, tool, and version page is listed directly in the root index, grouped by theme rather than by directory.
+
+Theme sections mix guides, idioms, and pitfalls, so each entry there carries a type tag:
+
+```markdown
+- [Tag] [Title](path/to/file.md) — one-line summary
+```
+
+`Tag` is one of `Guide`, `Idiom`, or `Pitfall`, matching the directory the linked file lives in.
+
+The Tools and Versions sections are each homogeneous — every entry is the same type — so their entries omit the tag:
+
+```markdown
+- [Title](path/to/file.md) — one-line summary
+```
+
+Within any section, entries are ordered alphabetically by title.
+
+---
+
+## Article Files (`pitfalls/`, `idioms/`, `tools/`)
+
+Each article is a standalone file covering one topic, indexed by theme in the root `README.md`.
 
 Articles open with a back-link, then a title and blockquote summary:
 
 ```markdown
-[← Category Name](README.md)
+[← C++ Field Guide](../README.md)
 
 # Article Title
 
@@ -113,7 +135,7 @@ If the article covers features from multiple C++ versions, move the tag to the r
 **cppreference links**: Link to cppreference at the end of the first `##` section that introduces the type or function. One link per article; if the article covers multiple distinct types, one link per type at first introduction.
 
 ```markdown
-[← Guides](README.md)
+[← C++ Field Guide](../README.md)
 
 # Topic
 
@@ -153,6 +175,8 @@ State the rule plainly. One to two sentences, no hedging.
 Every version file follows this fixed template:
 
 ```markdown
+[← C++ Field Guide](../README.md)
+
 # C++XX
 
 > One-sentence description of what this version is about.

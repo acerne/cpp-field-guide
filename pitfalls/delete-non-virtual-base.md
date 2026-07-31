@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # `delete` via Non-Virtual Base Pointer
 
