@@ -15,6 +15,7 @@
 ## Integer Arithmetic
 
 - [Pitfall] [INT_MIN Negation](pitfalls/int-min-negation.md) — negating `INT_MIN` is undefined behavior
+- [Guide] [Integer Comparison](guides/integer-comparison.md) — use `std::cmp_equal` and its siblings to compare signed and unsigned integers without the implicit-conversion trap
 - [Pitfall] [Integer Division Truncation](pitfalls/integer-division.md) — division truncates toward zero, not toward −∞
 - [Pitfall] [Integer Promotion in Arithmetic](pitfalls/integer-promotion.md) — `char`/`uint8_t` arithmetic promotes to `int`; `~uint8_t(0xFF)` is `-256`, not `0`
 - [Pitfall] [Signed Integer Overflow](pitfalls/signed-integer-overflow.md) — UB, not wrap-around; compilers exploit this
