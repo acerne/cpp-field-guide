@@ -14,10 +14,10 @@
 
 ## Integer Arithmetic
 
-- [Pitfall] [char Signedness](pitfalls/char-signedness.md) — whether plain `char` is signed or unsigned is implementation-defined
 - [Guide] [Fixed-Width Integers vs Built-in Types](guides/fixed-width-integers.md) — use `std::int32_t` and friends when the exact bit width is part of a contract
-- [Pitfall] [INT_MIN Negation](pitfalls/int-min-negation.md) — negating `INT_MIN` is undefined behavior
 - [Guide] [Integer Comparison](guides/integer-comparison.md) — use `std::cmp_equal` and its siblings to compare signed and unsigned integers without the implicit-conversion trap
+- [Pitfall] [char Signedness](pitfalls/char-signedness.md) — whether plain `char` is signed or unsigned is implementation-defined
+- [Pitfall] [INT_MIN Negation](pitfalls/int-min-negation.md) — negating `INT_MIN` is undefined behavior
 - [Pitfall] [Integer Division Truncation](pitfalls/integer-division.md) — division truncates toward zero, not toward −∞
 - [Pitfall] [Integer Promotion in Arithmetic](pitfalls/integer-promotion.md) — `char`/`uint8_t` arithmetic promotes to `int`; `~uint8_t(0xFF)` is `-256`, not `0`
 - [Pitfall] [Signed Integer Overflow](pitfalls/signed-integer-overflow.md) — UB, not wrap-around; compilers exploit this
@@ -31,12 +31,12 @@
 
 ## Object Lifetime & Initialization
 
-- [Guide] [Copy vs Move](guides/copy-vs-move.md) — when to copy an object and when to move it, including RVO and copy elision
-- [Guide] [Initialization Syntax](guides/initialization.md) — when to use `=`, `()`, or `{}` to initialize a variable
-- [Guide] [Rule of Five](guides/rule-of-five.md) — a class that manages a resource directly needs the destructor, copy, and move members defined together, or none at all
 - [Idiom] [Copy-and-Swap](idioms/copy-and-swap.md) — implement copy assignment by copying into a temporary and swapping for exception safety and self-assignment correctness
 - [Idiom] [RAII](idioms/raii.md) — bind resource lifetime to object lifetime for guaranteed cleanup
 - [Idiom] [Scope Guard](idioms/scope-guard.md) — run cleanup code on scope exit regardless of how or when the resource was acquired
+- [Guide] [Copy vs Move](guides/copy-vs-move.md) — when to copy an object and when to move it, including RVO and copy elision
+- [Guide] [Initialization Syntax](guides/initialization.md) — when to use `=`, `()`, or `{}` to initialize a variable
+- [Guide] [Rule of Five](guides/rule-of-five.md) — a class that manages a resource directly needs the destructor, copy, and move members defined together, or none at all
 - [Pitfall] [Temporary Lifetime Extension](pitfalls/temporary-lifetime-extension.md) — binding `const&` to a temporary extends lifetime only when direct; member access or function returns still dangle
 - [Pitfall] [Uninitialized Variables Are Undefined Behavior](pitfalls/uninitialized-variables.md) — reading an uninitialized local is UB, not just a garbage value
 - [Pitfall] [Zero-Initializing a Scoped Enum](pitfalls/enum-zero-initialization.md) — `Number x{};` yields `0`, a value that may not match any named enumerator
@@ -51,20 +51,20 @@
 
 ## Class Design & Encapsulation
 
-- [Guide] [Forward Declarations](guides/forward-declarations.md) — declare a type or function before defining it to break circular dependencies and reduce compile-time coupling
 - [Idiom] [Factory Method](idioms/factory-method.md) — a static member function that validates inputs and returns an object only when construction would succeed
 - [Idiom] [Hidden Friend](idioms/hidden-friend.md) — define non-member functions inside the class body so they are reachable only via ADL
 - [Idiom] [Passkey](idioms/passkey.md) — restrict a public constructor to specific callers by requiring a private token type only those callers can construct
 - [Idiom] [Pimpl](idioms/pimpl.md) — hide private members behind a pointer to a forward-declared struct to reduce compile-time coupling
+- [Guide] [Forward Declarations](guides/forward-declarations.md) — declare a type or function before defining it to break circular dependencies and reduce compile-time coupling
 
 ## Templates & Generic Programming
 
-- [Guide] [Deduction Guides](guides/deduction-guides.md) — write explicit deduction guides when the compiler cannot derive class template arguments from constructors alone
-- [Guide] [std::variant and std::visit](guides/variant-visit.md) — type-safe union with exhaustive dispatch over its alternatives
 - [Idiom] [if constexpr Dispatch](idioms/if-constexpr-dispatch.md) — branch on a compile-time condition inside a template without instantiating the discarded branch
 - [Idiom] [Overload Set](idioms/overload-set.md) — combine multiple lambdas into one callable for exhaustive and compiler-checked variant dispatch
 - [Idiom] [Tag Dispatch](idioms/tag-dispatch.md) — select a function overload at compile time by passing a trait-derived tag type
 - [Idiom] [Type Erasure](idioms/type-erasure.md) — hide concrete types behind a uniform interface without requiring a shared base class
+- [Guide] [Deduction Guides](guides/deduction-guides.md) — write explicit deduction guides when the compiler cannot derive class template arguments from constructors alone
+- [Guide] [std::variant and std::visit](guides/variant-visit.md) — type-safe union with exhaustive dispatch over its alternatives
 
 ## Containers & Iteration
 
