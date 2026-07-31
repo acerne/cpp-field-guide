@@ -29,6 +29,7 @@
 - [Idiom] [Scope Guard](idioms/scope-guard.md) — run cleanup code on scope exit regardless of how or when the resource was acquired
 - [Pitfall] [Temporary Lifetime Extension](pitfalls/temporary-lifetime-extension.md) — binding `const&` to a temporary extends lifetime only when direct; member access or function returns still dangle
 - [Pitfall] [Uninitialized Variables Are Undefined Behavior](pitfalls/uninitialized-variables.md) — reading an uninitialized local is UB, not just a garbage value
+- [Pitfall] [Zero-Initializing a Scoped Enum](pitfalls/enum-zero-initialization.md) — `Number x{};` yields `0`, a value that may not match any named enumerator
 
 ## Inheritance & Polymorphism
 
