@@ -20,12 +20,15 @@ Casting one operand to match the other avoids the conversion trap, but only if t
 
 ```cpp
 bool lessThan(int a, unsigned b) {
-    if (a < 0) return true;                       // negative always less
-    return static_cast<unsigned>(a) < b;           // safe now — a >= 0
+    if (a < 0) return true;               // negative always less
+    return static_cast<unsigned>(a) < b;  // safe now — a >= 0
 }
 ```
 
-This has to be rewritten, and re-verified, for every combination of widths and signedness (`int`/`unsigned`, `long`/`size_t`, `int`/`long long`, ...). A cast to a wider signed type only works if that type can represent every value of the unsigned operand, which is not guaranteed for the widest types.
+This has to be rewritten, and re-verified, for every combination of widths and signedness (`int`/`unsigned`, `long`/`size_t`, `int`/`long long`, ...).
+
+> [!WARNING]
+> Widening to a bigger signed type is not a general fix: the cast is only safe if that type can represent every value of the unsigned operand, which fails once the unsigned operand is already the widest integer type (e.g. `uint64_t`).
 
 ---
 

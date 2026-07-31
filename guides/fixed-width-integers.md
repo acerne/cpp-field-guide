@@ -50,7 +50,10 @@ On a typical 64-bit target:
 | `std::int32_t` / `std::uint32_t` | `int` / `unsigned int` | `int` / `unsigned int` |
 | `std::int64_t` / `std::uint64_t` | `long` / `unsigned long` | `long long` / `unsigned long long` |
 
-The 64-bit row is exactly where the two data models diverge: `std::int64_t` is `long` on Linux/macOS but `long long` on Windows. Code should never depend on which underlying type a fixed-width alias resolves to — only that it's exactly 64 bits.
+The 64-bit row is exactly where the two data models diverge: `std::int64_t` is `long` on Linux/macOS but `long long` on Windows.
+
+> [!WARNING]
+> Code should never depend on which underlying type a fixed-width alias resolves to — only that it's exactly 64 bits. Overload resolution, template specializations, or `printf` format specifiers written against `long` or `long long` specifically can pick the wrong path on the other platform.
 
 ---
 
@@ -67,7 +70,10 @@ std::size_t n = v.size();   // unsigned, platform's "natural" size width
 
 ## `std::int32_t` vs `::int32_t`
 
-`<cstdint>` is only required to put these names in namespace `std`. C's `<stdint.h>` defines the same names at global scope, and most standard libraries also inject them into the global namespace as an extension when `<cstdint>` is included — so `::int32_t` compiles almost everywhere, but nothing guarantees it in standard C++.
+`<cstdint>` is only required to put these names in namespace `std`. C's `<stdint.h>` defines the same names at global scope, and most standard libraries also inject them into the global namespace as an extension when `<cstdint>` is included.
+
+> [!WARNING]
+> `::int32_t` compiles almost everywhere, but nothing guarantees it in standard C++ — code relying on the global-namespace name can fail to compile against a standard-conforming library that doesn't inject the extension.
 
 ```cpp
 #include <cstdint>

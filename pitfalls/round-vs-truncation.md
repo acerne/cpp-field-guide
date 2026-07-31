@@ -12,4 +12,5 @@ std::round(-1.5);    // -2.0  — away from zero ("round half away from zero")
 (int)(-1.5);         // -1    — truncation, same as trunc
 ```
 
-`std::round` and `std::rint` differ: `std::rint` uses the current rounding mode (default: round-to-nearest-even, i.e. banker's rounding), while `std::round` always rounds half away from zero.
+> [!WARNING]
+> `std::round` and `std::rint` are not interchangeable: `std::rint` uses the current rounding mode (default: round-to-nearest-even, i.e. banker's rounding), while `std::round` always rounds half away from zero. Swapping one for the other silently changes results at `.5` boundaries.

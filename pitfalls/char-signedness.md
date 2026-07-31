@@ -28,6 +28,9 @@ int widened = raw;   // always 128, regardless of platform
 
 The only legitimate use of plain `char` is to hold a text character, since that's the type string literals, `std::string`, and the iostream/string APIs are built around. Even then, if code inspects the numeric value — comparisons, arithmetic, passing to functions like [`std::isalpha`](https://en.cppreference.com/w/cpp/string/byte/isalpha) that require a non-negative value representable as `unsigned char` — cast or declare explicitly as `signed char` or `unsigned char` rather than relying on the platform default.
 
+> [!WARNING]
+> Passing a plain (possibly negative) `char` directly to `<cctype>` functions like `std::isalpha` is undefined behavior on platforms where `char` is signed. Cast to `unsigned char` first.
+
 ```cpp
 char c = getchar_from_somewhere();
 if (std::isalpha(static_cast<unsigned char>(c)))  // avoid UB for negative char values

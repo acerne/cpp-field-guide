@@ -232,7 +232,10 @@ Without `override`, a signature mismatch silently creates a new virtual function
 
 [Read more](https://en.cppreference.com/w/cpp/language/noexcept_spec)
 
-Declares that a function does not throw. The standard library only moves elements during reallocation (e.g. `std::vector` resize) when the move constructor is `noexcept` — without it, it falls back to copying.
+Declares that a function does not throw.
+
+> [!WARNING]
+> The standard library only moves elements during reallocation (e.g. `std::vector` resize) when the move constructor is `noexcept` — without it, it silently falls back to copying, with no error or warning.
 
 ```cpp
 void close() noexcept;
@@ -261,11 +264,12 @@ int x = 3.7;    // ok — truncates silently
 int x{3.7};     // error — narrowing conversion
 ```
 
-Watch out: if a type has an `initializer_list` constructor, it takes priority. This is the `std::vector` trap:
-```cpp
-std::vector<int> v(3, 0);   // 3 elements, all 0
-std::vector<int> v{3, 0};   // 2 elements: 3 and 0
-```
+> [!WARNING]
+> If a type has an `initializer_list` constructor, it takes priority over any other constructor. This is the `std::vector` trap:
+> ```cpp
+> std::vector<int> v(3, 0);   // 3 elements, all 0
+> std::vector<int> v{3, 0};   // 2 elements: 3 and 0
+> ```
 
 ### Type Aliases
 

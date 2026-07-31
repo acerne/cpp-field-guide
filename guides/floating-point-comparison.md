@@ -28,7 +28,10 @@ double b = std::sqrt(2.0);
 if (a == b) { /* fine — identical computation */ }
 ```
 
-Arithmetic introduces rounding at each step, so two expressions that are mathematically equal rarely produce bit-identical results. Also note that `NaN != NaN` — `==` silently returns false for any NaN operand; use `std::isnan` to test for NaN explicitly.
+Arithmetic introduces rounding at each step, so two expressions that are mathematically equal rarely produce bit-identical results.
+
+> [!WARNING]
+> `NaN != NaN` — `==` silently returns `false` for any NaN operand, including comparing a NaN to itself. Use `std::isnan` to test for NaN explicitly.
 
 ---
 

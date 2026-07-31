@@ -9,7 +9,10 @@ float a = 1e8f, b = -1e8f, c = 1.0f;
 (a + b) + c == a + (b + c);  // false
 ```
 
-Compilers must respect parentheses by default. Flags like `-ffast-math` / `-fassociative-math` allow reordering for speed at the cost of reproducibility.
+Compilers must respect parentheses by default.
+
+> [!WARNING]
+> Flags like `-ffast-math` / `-fassociative-math` allow the compiler to reorder floating-point operations for speed, silently invalidating code that depends on exact evaluation order — a build-wide flag can break math that looks correct in isolation.
 
 ---
 

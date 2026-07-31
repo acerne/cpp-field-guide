@@ -74,7 +74,8 @@ void Widget::doWork() {
 }
 ```
 
-`~Widget` must be defined in the `.cpp` where `Impl` is complete — `unique_ptr`'s destructor calls `delete` on an incomplete type if it is defined in the header.
+> [!WARNING]
+> `~Widget` must be defined in the `.cpp` where `Impl` is complete. If left implicit or defined inline in the header, `unique_ptr`'s destructor calls `delete` on an incomplete type at the point it's instantiated.
 
 ---
 

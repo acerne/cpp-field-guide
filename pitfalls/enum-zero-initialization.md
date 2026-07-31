@@ -22,7 +22,10 @@ else if (x == Number::Three) { /* ... */ }
 // none of these match when x == 0 — no compiler warning
 ```
 
-A `switch` covering all enumerators has the same gap; only a `default:` label catches the zero value, and `-Wswitch` won't flag a missing case for it since `0` isn't a declared enumerator.
+A `switch` covering all enumerators has the same gap; only a `default:` label catches the zero value.
+
+> [!WARNING]
+> `-Wswitch` won't flag a missing case for the zero value since `0` isn't a declared enumerator — an "exhaustive" switch with no compiler warnings can still silently fall through.
 
 If a "no value" state is intended, reserve it explicitly so it has a name:
 ```cpp

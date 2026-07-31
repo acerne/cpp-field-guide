@@ -14,4 +14,5 @@ Integer division truncates toward zero — not toward negative infinity. This di
 
 The invariant is: `(a / b) * b + (a % b) == a`.
 
-Before C++11, the sign of `%` with negative operands was implementation-defined. C++11 mandates truncation toward zero for both `/` and `%`.
+> [!NOTE]
+> Before C++11, the sign of `%` with negative operands was implementation-defined. C++11 mandates truncation toward zero for both `/` and `%`; code targeting an older baseline cannot rely on it.

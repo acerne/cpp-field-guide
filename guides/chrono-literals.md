@@ -59,4 +59,7 @@ auto text = "5"s;  // std::string, holds "5"
 auto time = 5s;     // std::chrono::seconds, holds 5
 ```
 
-Both live under `std::literals`, so pulling in the whole namespace is safe — overload resolution picks the right operator based on the literal's own type. Pulling in only `std::literals::chrono_literals`, though, leaves `""s` on a string literal without a matching operator.
+Both live under `std::literals`, so pulling in the whole namespace is safe — overload resolution picks the right operator based on the literal's own type.
+
+> [!WARNING]
+> Pulling in only `std::literals::chrono_literals` leaves `""s` on a string literal without a matching operator.

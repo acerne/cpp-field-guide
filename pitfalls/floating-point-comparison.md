@@ -15,7 +15,10 @@ Use an epsilon comparison instead:
 std::fabs(a - b) < std::numeric_limits<double>::epsilon();
 ```
 
-`epsilon()` is the smallest difference distinguishable from 1.0 — it is only appropriate for values near 1. For larger magnitudes, use a relative epsilon:
+> [!WARNING]
+> `epsilon()` is the smallest difference distinguishable from 1.0 — it is only appropriate for values near 1. Using it as a fixed absolute threshold at other magnitudes silently gives wrong results.
+
+For larger magnitudes, use a relative epsilon:
 ```cpp
 std::fabs(a - b) <= std::numeric_limits<double>::epsilon() * std::fabs(a + b);
 ```
