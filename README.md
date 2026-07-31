@@ -2,6 +2,10 @@
 
 > A practical reference for C++ — pitfalls, patterns, hints, and version overviews.
 
+## Standard Behavior Categories
+
+- [Guide] [Standard Behavior Categories](guides/behavior-categories.md) — undefined, implementation-defined, unspecified, and ill-formed no diagnostic required, and why "it compiled" proves none of them are fine
+
 ## Floating-Point Arithmetic
 
 - [Guide] [Floating-Point Comparison](guides/floating-point-comparison.md) — when to use `==`, absolute epsilon, or combined tolerance to compare floating-point values
