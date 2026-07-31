@@ -42,6 +42,21 @@ Link text must never contain backtick code styling, even when the heading or tit
 
 ---
 
+## Alerts
+
+Use GitHub-style alert blocks to make a single caveat stand out from surrounding prose — a correctness trap, a platform-specific gotcha, or a version requirement easy to skim past.
+
+```markdown
+> [!WARNING]
+> Warning text...
+```
+
+Supported types: `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`. Renders on GitHub, GitLab, and Codeberg (Forgejo).
+
+Use sparingly — reserve for points that cause a bug or a wrong assumption if missed, not for general commentary. `WARNING` for correctness or platform traps; `NOTE` for supplementary, non-critical caveats.
+
+---
+
 ## Code Examples
 
 - Snippets are preferred. Omit `#include` boilerplate and `main()` wrappers unless they add meaning.

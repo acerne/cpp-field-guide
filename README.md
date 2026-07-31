@@ -23,6 +23,12 @@
 - [Pitfall] [Signed Integer Overflow](pitfalls/signed-integer-overflow.md) — UB, not wrap-around; compilers exploit this
 - [Pitfall] [Signed / Unsigned Comparison](pitfalls/signed-unsigned-comparison.md) — `-1 < 1u` is `false`
 
+## Literals
+
+- [Guide] [Numeric Literals](guides/numeric-literals.md) — radix prefixes, digit separators, and integer/floating-point suffixes including `uz`/`z`
+- [Guide] [std::chrono Literals](guides/chrono-literals.md) — duration suffixes (`h`, `min`, `s`, `ms`, `us`, `ns`) and C++20 calendar suffixes (`d`, `y`)
+- [Guide] [String and Character Literals](guides/string-literals.md) — encoding prefixes, raw strings, and the `s`/`sv` suffixes
+
 ## Object Lifetime & Initialization
 
 - [Guide] [Copy vs Move](guides/copy-vs-move.md) — when to copy an object and when to move it, including RVO and copy elision
