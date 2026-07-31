@@ -24,6 +24,7 @@
 
 - [Guide] [Copy vs Move](guides/copy-vs-move.md) — when to copy an object and when to move it, including RVO and copy elision
 - [Guide] [Initialization Syntax](guides/initialization.md) — when to use `=`, `()`, or `{}` to initialize a variable
+- [Guide] [Rule of Five](guides/rule-of-five.md) — a class that manages a resource directly needs the destructor, copy, and move members defined together, or none at all
 - [Idiom] [Copy-and-Swap](idioms/copy-and-swap.md) — implement copy assignment by copying into a temporary and swapping for exception safety and self-assignment correctness
 - [Idiom] [RAII](idioms/raii.md) — bind resource lifetime to object lifetime for guaranteed cleanup
 - [Idiom] [Scope Guard](idioms/scope-guard.md) — run cleanup code on scope exit regardless of how or when the resource was acquired
