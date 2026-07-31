@@ -15,6 +15,7 @@
 ## Integer Arithmetic
 
 - [Pitfall] [char Signedness](pitfalls/char-signedness.md) — whether plain `char` is signed or unsigned is implementation-defined
+- [Guide] [Fixed-Width Integers vs Built-in Types](guides/fixed-width-integers.md) — use `std::int32_t` and friends when the exact bit width is part of a contract
 - [Pitfall] [INT_MIN Negation](pitfalls/int-min-negation.md) — negating `INT_MIN` is undefined behavior
 - [Guide] [Integer Comparison](guides/integer-comparison.md) — use `std::cmp_equal` and its siblings to compare signed and unsigned integers without the implicit-conversion trap
 - [Pitfall] [Integer Division Truncation](pitfalls/integer-division.md) — division truncates toward zero, not toward −∞
