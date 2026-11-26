@@ -15,12 +15,12 @@
 - [Pitfall] [NaN in Sorted Containers](pitfalls/nan-sorted-containers.md) — NaN violates strict weak ordering, corrupting ordered containers
 - [Pitfall] [std::round vs Truncation](pitfalls/round-vs-truncation.md) — rounding functions differ for negative numbers
 - [Pitfall] [std::min / std::fmin and NaN](pitfalls/nan-min-fmin.md) — `std::min` result depends on argument order when NaN is present
+- [Pitfall] [Basic Numeric Operations Are Not constexpr](pitfalls/sqrt-log-pow-not-constexpr.md) — `std::sqrt`, `std::pow`, `std::log` and many more are not `constexpr` and cannot be used at compile-time
 
 ## Integer Arithmetic
 
 - [Guide] [Fixed-Width Integers vs Built-in Types](guides/fixed-width-integers.md) — use `std::int32_t` and friends when the exact bit width is part of a contract
 - [Guide] [Integer Comparison](guides/integer-comparison.md) — use `std::cmp_equal` and its siblings to compare signed and unsigned integers without the implicit-conversion trap
-- [Pitfall] [char Signedness](pitfalls/char-signedness.md) — whether plain `char` is signed or unsigned is implementation-defined
 - [Pitfall] [INT_MIN Negation](pitfalls/int-min-negation.md) — negating `INT_MIN` is undefined behavior
 - [Pitfall] [Integer Division Truncation](pitfalls/integer-division.md) — division truncates toward zero, not toward −∞
 - [Pitfall] [Integer Promotion in Arithmetic](pitfalls/integer-promotion.md) — `char`/`uint8_t` arithmetic promotes to `int`; `~uint8_t(0xFF)` is `-256`, not `0`
@@ -82,6 +82,7 @@
 
 - [Guide] [Polymorphic Casting](guides/polymorphic-casting.md) — when to use `static_cast`, `dynamic_cast`, or `dynamic_pointer_cast` on class hierarchies
 - [Guide] [Type Casting](guides/type-casting.md) — when to use `static_cast`, `reinterpret_cast`, or a C-style cast
+- [Pitfall] [std::clamp hi < lo Is Undefined Behavior](pitfalls/clamp-undefined-behavior.md) — behavior of `hi < lo` is not defined; no exception is thrown
 
 ## Operators & Function Interfaces
 
@@ -98,9 +99,13 @@
 
 - [Guide] [std::future and std::promise](guides/future-promise.md) — set a value asynchronously and retrieve it from another thread
 
-## Compiler & Portability
+## Compiler & Platform
 
 - [Pitfall] [MSVC /permissive-](pitfalls/msvc-permissive.md) — MSVC is non-conformant by default; the conformance flag name is counterintuitive
+- [Pitfall] [long int can be 4 or 8 bytes on 64-bit platform](pitfalls/long-int-platform-difference.md) — type `long` can use either 4 or 8 bytes on 64-bit platforms
+- [Pitfall] [char Signedness](pitfalls/char-signedness.md) — whether plain `char` is signed or unsigned is implementation-defined
+
+---
 
 ## Tools
 
