@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # Uninitialized Variables Are Undefined Behavior
 
@@ -12,12 +12,13 @@ if (x > 0)          // UB: x is indeterminate
 
 The optimizer may prove that the `if` body is unreachable (since UB makes any value of `x` equally valid) and remove it — or keep it, or do something else entirely. The result is not predictable across compilers, optimization levels, or builds.
 
-Zero-initialization only happens automatically for:
-- Non-local (namespace-scope, `static`) variables.
-- Objects constructed with `{}` or `= {}`.
-- POD members of a value-initialized aggregate.
-
-Local variables of built-in type are **not** zero-initialized by default.
+> [!NOTE]
+> Zero-initialization only happens automatically for:
+> - Non-local (namespace-scope, `static`) variables.
+> - Objects constructed with `{}` or `= {}`.
+> - POD members of a value-initialized aggregate.
+>
+> Local variables of built-in type are **not** zero-initialized by default.
 
 ```cpp
 int a;       // indeterminate

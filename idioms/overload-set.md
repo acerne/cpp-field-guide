@@ -1,4 +1,4 @@
-[← Idioms](README.md)
+[← C++ Field Guide](../README.md)
 
 # Overload Set
 
@@ -65,5 +65,7 @@ The specific overload (`int`) takes priority over the generic one when both matc
 
 **Cons**
 - `overloaded` is not in the standard library — it requires a one-time definition.
-- A generic lambda placed before a more specific one silently swallows it; ordering matters.
 - Two lambdas with identical signatures are ambiguous and cause a compile error; they must be merged or disambiguated.
+
+> [!WARNING]
+> A generic lambda placed before a more specific one silently swallows it — ordering matters, and the compiler gives no error when a later, more specific lambda becomes unreachable.

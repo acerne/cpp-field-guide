@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # `std::vector<bool>` Is Not a Container
 
@@ -33,7 +33,8 @@ void zero_first(std::vector<T>& v) {
 - `std::deque<bool>` — not specialized; returns real `bool&`.
 - `std::bitset<N>` — fixed-size bit array with a similar proxy but documented explicitly.
 
-**Thread safety:** `vector<bool>` is not safe for concurrent writes to separate elements. Bits are packed into words; writing element `i` requires a read-modify-write on the underlying word. Two threads writing to different elements that share the same word have a data race. All other `vector<T>` specializations guarantee that concurrent writes to different elements are safe, because each element occupies a distinct memory location.
+> [!WARNING]
+> **Thread safety:** `vector<bool>` is not safe for concurrent writes to separate elements. Bits are packed into words; writing element `i` requires a read-modify-write on the underlying word. Two threads writing to different elements that share the same word have a data race — even though every other `vector<T>` specialization guarantees that concurrent writes to different elements are safe, because each element occupies a distinct memory location.
 
 ```cpp
 std::vector<bool> v(64, false);

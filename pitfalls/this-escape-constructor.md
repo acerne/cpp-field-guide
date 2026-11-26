@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # Passing `this` to External Code During Construction
 
@@ -59,7 +59,8 @@ Base::on_registered
 
 ---
 
-The same applies to `dynamic_cast`. The runtime type is still `Base` at that point, so a cast to `Derived*` returns `nullptr` and silently skips initialization:
+> [!WARNING]
+> The same applies to `dynamic_cast`. The runtime type is still `Base` at that point, so a cast to `Derived*` returns `nullptr` and silently skips initialization — a defensive `dynamic_cast` does not turn this into a detectable error, it just fails quietly:
 
 ```cpp
 static void registry_add(Base* obj) {

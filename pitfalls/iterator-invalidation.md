@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # Iterator Invalidation
 
@@ -20,9 +20,10 @@ The rules differ by container:
 | `std::list`, `std::map`, `std::set` | Only iterators to the erased element are invalidated; all others remain valid |
 | `std::unordered_map` | Rehashing (triggered by load factor) invalidates all iterators |
 
-A particularly common mistake is erasing elements mid-iteration — even a single `erase` inside a range-based `for` loop invalidates its internal iterator, producing undefined behavior.
-
 Pre-reserve capacity with `v.reserve(n)` to prevent reallocation when the final size is known.
+
+> [!WARNING]
+> A particularly common mistake is erasing elements mid-iteration — even a single `erase` inside a range-based `for` loop invalidates its internal iterator, producing undefined behavior. There is no visible iterator to reason about, so the bug is easy to miss.
 
 ---
 

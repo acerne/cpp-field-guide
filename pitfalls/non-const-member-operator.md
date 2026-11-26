@@ -1,4 +1,4 @@
-[← Pitfalls](README.md)
+[← C++ Field Guide](../README.md)
 
 # Non-const Member Operator
 
@@ -12,7 +12,7 @@ The same applies to every comparison and inspection operator: `operator<`, `oper
 
 Alternatively, a better fix is to define comparison operators as hidden friends. See [Operator Forms](../guides/operator-forms.md).
 
-> [!note]
+> [!NOTE]
 > Some compilers can warn about operators missing const.
 
 ---

@@ -1,3 +1,5 @@
+[← C++ Field Guide](../README.md)
+
 # C++20
 
 > C++20 is the largest revision since C++11 — it introduces concepts, coroutines, modules, and ranges as four major pillars alongside a substantially expanded standard library.
@@ -23,6 +25,7 @@
   - [std::jthread](#stdjthread)
   - [std::source_location](#stdsource_location)
   - [std::bit_cast](#stdbit_cast)
+  - [std::cmp_equal and Related Functions](#stdcmp_equal-and-related-functions)
   - [std::erase / std::erase_if](#stderase--stderase_if)
   - [Synchronization Primitives](#synchronization-primitives)
   - [Mathematical Constants](#mathematical-constants)
@@ -387,6 +390,22 @@ uint32_t bits = std::bit_cast<uint32_t>(f);  // 0x3F800000
 ```
 
 Both types must be the same size and trivially copyable.
+
+### `std::cmp_equal` and Related Functions
+
+[Read more](https://en.cppreference.com/w/cpp/utility/intcmp)
+
+`<utility>` adds `std::cmp_equal`, `std::cmp_less`, and four more comparison functions that compare integers of different signedness by mathematical value, with no implicit-conversion bug:
+
+```cpp
+int a = -1;
+unsigned b = 1u;
+
+a < b;                  // false — a converts to a huge unsigned value
+std::cmp_less(a, b);    // true — compares as -1 < 1
+```
+
+See [Integer Comparison](../guides/integer-comparison.md) for the full set of functions and when to reach for them.
 
 ### `std::erase` / `std::erase_if`
 
